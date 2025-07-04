@@ -1,0 +1,266 @@
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 500;
+	font-display: swap;
+	src: local('Pretendard Medium'), url(./woff2/Pretendard-Medium.woff2) format('woff2'), url(./woff/Pretendard-Medium.woff) format('woff');
+}
+
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	min-height: 100vh;
+	height: auto;
+	overflow-x: hidden;
+}
+
+
+.wrap {
+	display: block;
+	width: 100%;
+	min-height: 100vh;
+	background-color: #fefdfb;
+	background-image: 
+			linear-gradient(rgba(218, 119, 86, 0.15) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(218, 119, 86, 0.15) 1px, transparent 1px),
+			linear-gradient(rgba(218, 119, 86, 0.05) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(218, 119, 86, 0.05) 1px, transparent 1px);
+	background-size: 25px 25px, 25px 25px, 5px 5px, 5px 5px;
+}
+
+.title {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 4rem;
+	color: #da7756;
+	text-shadow: 0.3px 0.3px 5px rgba(0, 0, 0, 0.3);
+	display: block;
+	text-align: center;
+	width: 100%;
+	padding: 10px 0px;
+}
+
+.large {
+	font-family: "Pretendard";
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.deepgray {
+color: #2e2e2e;
+}
+
+.white {
+	color: #ffffff;
+}
+
+.main-container {
+	padding-top: 10px;
+	margin-left: 20%;
+	margin-right: 20%;
+	display: flex;
+	flex-direction: column;
+}
+
+.input-col {
+	display: flex;
+	height: 60px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+label {
+	margin-left: 30px;
+}
+
+label, span {
+  color: #2e2e2e;
+  vertical-align: middle;
+}
+
+select {
+	height: 44px;
+	width: 90px;
+	line-height: 22px;
+  appearance: none;
+  background-color: rgba(218, 119, 86, 0.5);
+	color: white;
+  border: none;
+  border-radius: 17px;
+  padding: 8px 12px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+	vertical-align: middle;
+}
+
+select:hover, #calculate:hover, input:hover{
+  background-color: rgba(218, 119, 86, 0.8);
+}
+
+i:hover {
+	color: rgba(218, 119, 86, 0.8);
+}
+
+input {
+	font-family: "Pretendard";
+	font-weight: 500;
+	color: white;
+	font-size: 25px;
+	height: 40px;
+	width: 60px;
+	background-color: rgba(218, 119, 86, 0.5);
+  border: none;
+  border-radius: 17px;
+	vertical-align: middle;
+	padding-left: 10px;
+	transition: background-color 0.3s ease;
+}
+
+.just-container {
+	display: flex;
+}
+
+.reload-cal-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	margin-top: 50px;
+	padding-bottom: 50px;
+}
+
+#calculate {
+	display: block;
+	width: 115px;
+	height: 45px;
+	background-color: rgba(218, 119, 86, 0.5);
+	color: #ffffff;
+	border: none;
+	border-radius: 17px;
+	font-family: 'Pretendard';
+	font-weight: 500;
+  font-size: 25px;
+	transition: background-color 0.3s ease;
+	cursor: pointer;
+}
+
+i {
+	color: rgba(218, 119, 86, 0.5);
+	cursor: pointer;
+	transition: color 0.3s ease;
+}
+
+.midterm.hidden {
+	visibility: hidden;
+}
+
+ .results-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	flex-direction: column;
+	margin-left: 17%;
+	margin-right: 17%;
+	margin-top: 100px;
+}
+
+.result-col {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 100%;
+}
+
+.result-detail-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.xxlarge {
+	font-size: 4rem;
+	font-family: "Pretendard";
+	font-weight: 500;
+}
+
+
+.xlarge {
+	font-size: 40px;
+	font-family: "Pretendard";
+	font-weight: 500;
+}
+
+.brown {
+	color: #da7756;
+}
+
+.name-score-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 10px;
+}
+
+@media (max-width: 1605px){
+	.main-container {
+		margin-left: 10%;
+		margin-right: 10%;
+	}
+}
+
+
+@media (max-width: 1204px){
+	.main-container {
+		margin-left: 0;
+		margin-right: 3%;
+	}
+}
+
+@media (max-width: 993px){
+	.main-container {
+		margin-left: 3%;
+		margin-right: 3%;
+		gap: 40px;
+		padding-bottom: 30px;
+	}
+}
+
+@media (max-width: 651px) {
+	.title {
+		font-size: 3rem;
+	}
+	label, span {
+		font-size: 30px;
+		margin: 0;
+	}
+	.wrap {
+		height: 200vh;
+	}
+	.input-col {
+		flex-direction: column;
+		gap: 10px;
+	}
+	input {
+		height: 20px;
+		width: 33px;
+		border-radius: 10px;
+		line-height: 10px;
+	}
+	.main-container {
+		gap: 190px;
+		padding-bottom: 160px;
+	}
+	.midterm.hidden {
+		display: none;
+	}
+	.xxlarge {
+		font-size: 3.5rem;
+	}
+	.results-container {
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+}

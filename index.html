@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>성취도 계산기</title>
+</head>
+<body>
+  <div class="wrap">
+    <div class="title">성취도 계산기</div>
+    <div class="main-container">
+
+      <div class="input-col">
+        <div class="sebject">
+          <label for="subject-1" class="large deepgray">#1</label>
+          <select name="subject" id="subject-1" class="large white">
+            <option value="" disabled selected hidden>과목</option>
+            <option value="국어">국어</option>
+            <option value="사회">사회</option>
+            <option value="역사">역사</option>
+            <option value="수학">수학</option>
+            <option value="과학">과학</option>
+            <option value="영어">영어</option>
+            <option value="중국어">중국어</option>
+          </select>
+        </div>
+
+        <div class="performance large">
+        <label for="performance-score-1">수행평가 점수:</label>
+        <input type="number" name="performance" min="1" max="70" id="performance-score-1"><span>점</span>
+        </div>
+
+        <div class="midterm large">
+        <label for="midterm-score-1">중간고사 점수:</label>
+        <input type="number" name="midterm" min="1" max="100" id="midterm-score-1"><span>점</span>
+        </div>
+
+        <div class="final large">
+        <label for="final-score-1">기말고사 점수:</label>
+        <input type="number" name="final" min="1" max="100" id="final-score-1"><span>점</span>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="just-container">
+    <i class="fa-solid fa-circle-plus fa-2x" id="more-btn" style="display: block; margin: 0 auto;"></i>
+    </div>
+    <div class="reload-cal-container">
+      <i class="fa-solid fa-rotate-right fa-2x" id="reload-btn"></i>
+      <button id="calculate">계산하기</button>
+    </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>
