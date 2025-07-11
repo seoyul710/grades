@@ -104,8 +104,10 @@ function calculate() {
 
     let isValid = false;
 
-    if (subject_name === '수학' || subject_name === '영어') {
-      isValid = performance_score > 0 && performance_score <= 50 && midterm_score > 0 && midterm_score <= 100 && final_score > 0 && final_score <= 100;
+    if (subject_name === '수학') {
+      isValid = performance_score > 0 && performance_score <= 50 && midterm_score > 0 && midterm_score <= 100 && final_score > 0 && final_score <= 97;
+    } else if (subject_name === '영어') {
+      isValid = performance_score > 0 && performance_score <= 50 && final_score > 0 && final_score <= 100;
     } else if (subject_name === '중국어') {
       isValid = performance_score > 0 && performance_score <= 70 && final_score > 0 && final_score <= 100;
     } else {
@@ -133,7 +135,9 @@ function calculate() {
 
     let total_score
 
-    if (subject_name === '수학' || subject_name === '영어') {
+    if (subject_name === '수학') {
+      total_score = performance_score + midterm_score / 4 + final_score / 97 * 25;
+    } else if (subject_name === '영어') {
       total_score = performance_score + midterm_score / 4 + final_score / 4;
     } else if (subject_name === '중국어') {
       total_score = performance_score + final_score * 0.3;
