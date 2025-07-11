@@ -34,7 +34,6 @@ html, body {
 	font-weight: bold;
 	font-size: 4rem;
 	color: #da7756;
-	text-shadow: 0.3px 0.3px 5px rgba(0, 0, 0, 0.3);
 	display: block;
 	text-align: center;
 	width: 100%;
@@ -236,22 +235,15 @@ i {
 		font-size: 30px;
 		margin: 0;
 	}
-	.wrap {
-		height: 200vh;
-	}
 	.input-col {
+		height: 182px;
 		flex-direction: column;
-		gap: 10px;
 	}
 	input {
 		height: 20px;
 		width: 33px;
 		border-radius: 10px;
 		line-height: 10px;
-	}
-	.main-container {
-		gap: 190px;
-		padding-bottom: 160px;
 	}
 	.midterm.hidden {
 		display: none;
@@ -260,6 +252,7 @@ i {
 		font-size: 3.5rem;
 	}
 	.results-container {
+		margin-top: 10%;
 		margin-left: 5%;
 		margin-right: 5%;
 	}
