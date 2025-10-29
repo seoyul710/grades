@@ -11,23 +11,18 @@ function newCol(number) {
       <option value="수학">수학</option>
       <option value="과학">과학</option>
       <option value="영어">영어</option>
-      <option value="중국어">중국어</option>
+      <option value="정보">정보</option>
     </select>
   </div>
 
   <div class="performance large">
   <label for="performance-score-${number}">수행평가 점수:</label>
-  <input type="number" name="performance" min="0" max="70" id="performance-score-${number}"><span>점</span>
-  </div>
-
-  <div class="midterm large">
-  <label for="midterm-score-${number}">중간고사 점수:</label>
-  <input type="number" name="midterm" min="0" max="100" id="midterm-score-${number}"><span>점</span>
+  <input type="number" name="performance" min="0" max="60" id="performance-score-${number}" class="performance-input"><span class="performance-max-score">/50</span><span> 점</span>
   </div>
 
   <div class="final large">
   <label for="final-score-${number}">기말고사 점수:</label>
-  <input type="number" name="final" min="0" max="100" id="final-score-${number}"><span>점</span>
+  <input type="number" name="final" min="0" max="100" id="final-score-${number}"><span class="final-max-score">/100</span><span> 점</span>
   </div>
 </div>`
 } 
@@ -52,32 +47,27 @@ function disableSelectAndInput() {
 });
 }
 
-
-function addHideMidtermEventlLstner(number) {
+function addAdjustPerformanceMaxScoreEventListener(number) {
   document.getElementById(`subject-${number}`).addEventListener('change', (e) => {
-    const selectedValue = e.target.value;
-    const changedSelect = document.getElementById(`midterm-score-${number}`);
-    
-    if (selectedValue == '수학' || selectedValue == '영어') {
-      changedSelect.closest('.midterm').classList.remove('hidden')
-    } else {
-      changedSelect.closest('.midterm').classList.add('hidden')
-    }
-  });
+  const selectedValue = e.target.value;
+  const parentDiv = document.getElementById(`performance-score-${number}`).closest('div');
+  const firstSpan = parentDiv.querySelector('span');
+  firstSpan.textContent = (selectedValue === '수학' || selectedValue === '영어') ? '/50' : selectedValue === '사회' ? '/30' : selectedValue === '정보' ? '/20' : '/40';
+})
 }
 
 function resetAll() {
   result = [];
   resetCol();
-  addHideMidtermEventlLstner(1);
+  addAdjustPerformanceMaxScoreEventListener(1)
   document.getElementById('calculate').style.display = 'block';
   document.getElementById('more-btn').style.display = 'block';
 }
 
-addHideMidtermEventlLstner(1)
+addAdjustPerformanceMaxScoreEventListener(1)
 document.getElementById('more-btn').addEventListener('click', () => {
   showmore()
-  addHideMidtermEventlLstner(showsNow)
+  addAdjustPerformanceMaxScoreEventListener(showsNow)
 });
 
 document.getElementById('reload-btn').addEventListener('click', resetAll);
@@ -94,7 +84,6 @@ function calculate() {
   for (const col of cols) {
     const subject_name = col.querySelector('select[name="subject"]').value;
     const performance_score = Number(col.querySelector('input[name="performance"]').value);
-    const midterm_score = Number(col.querySelector('input[name="midterm"]').value);
     const final_score = Number(col.querySelector('input[name="final"]').value);
 
     if (!subject_name) {
@@ -104,12 +93,12 @@ function calculate() {
 
     let isValid = false;
 
-    if (subject_name === '수학') {
-      isValid = performance_score > 0 && performance_score <= 50 && midterm_score > 0 && midterm_score <= 100 && final_score > 0 && final_score <= 97;
-    } else if (subject_name === '영어') {
+    if (subject_name === '수학' || subject_name === '영어') {
       isValid = performance_score > 0 && performance_score <= 50 && final_score > 0 && final_score <= 100;
-    } else if (subject_name === '중국어') {
-      isValid = performance_score > 0 && performance_score <= 70 && final_score > 0 && final_score <= 100;
+    } else if (subject_name === '사회') {
+      isValid = performance_score > 0 && performance_score <= 30 && final_score > 0 && final_score <= 100;
+    } else if (subject_name === '정보') {
+      isValid = performance_score > 0 && performance_score <= 20 && final_score > 0 && final_score <= 100;
     } else {
       isValid = performance_score > 0 && performance_score <= 40 && final_score > 0 && final_score <= 100;
     }
@@ -118,7 +107,6 @@ function calculate() {
       inputs.push({
         subject_name: subject_name,
         performance_score: performance_score,
-        midterm_score: midterm_score,
         final_score: final_score
       });
     } else {
@@ -130,27 +118,33 @@ function calculate() {
   inputs.forEach(subject => {
     const subject_name = subject['subject_name'];
     const performance_score = subject['performance_score'];
-    const midterm_score = subject['midterm_score'];
     const final_score = subject['final_score'];
 
     let total_score
+    let converted
 
-    if (subject_name === '수학') {
-      total_score = performance_score + midterm_score / 4 + final_score / 97 * 25;
-    } else if (subject_name === '영어') {
-      total_score = performance_score + midterm_score / 4 + final_score / 4;
-    } else if (subject_name === '중국어') {
-      total_score = performance_score + final_score * 0.3;
+    if (subject_name === '수학' || subject_name === '영어') {
+      converted = final_score / 2
+      total_score = performance_score + converted;
+    } else if (subject_name === '사회') {
+      converted = final_score * 0.7
+      total_score = performance_score + converted;
+    } else if (subject_name === '정보') { 
+      converted = final_score * 0.8
+      total_score = performance_score + converted;
     } else {
-      total_score = performance_score + final_score * 0.6;
+      converted = final_score * 0.6
+      total_score = performance_score + converted;
     }
 
     const total_score_rounded = Math.round(total_score * 100) / 100;
+    const converted_rounded = Math.round(converted * 100) / 100;
 
     result.push({
     subject_name: subject_name,
     total_score: total_score_rounded,
-    grade: grade(Math.round(total_score))
+    grade: grade(Math.round(total_score)),
+    formula: `${performance_score} + ${converted_rounded} = ${total_score_rounded}`
     });
   });
   return true;
@@ -179,16 +173,26 @@ function displayResult() {
     return;
   }
   result.forEach((subject, i) => {
-    const char = `<div class="results-container">
+    const char = i === 0 ? `<div class="results-container">
+      <div class="result-col">
+        <span class="xxlarge">#1 ${subject['subject_name']}</span>
+          <div class="result-detail-container xlarge">
+            <div class="name-score-container"><span class="result-title">원점수<div class="icon-wrapper"><i class="fa-regular fa-circle-question"></i><div class="tooltip">원점수란 합계점수를 반올림해<br> 성취도에 반영되는 점수입니다.</div></div></span><span class="xxlarge brown">${Math.round(subject['total_score'])}</span></div>
+            <div class="name-score-container"><span class="result-title">합계점수<div class="icon-wrapper"><i class="fa-regular fa-circle-question"></i><div class="tooltip">합계점수란 시험 점수를 환산해<br>수행평가 점수와 더한 점수입니다.<br><span class="brown">현재 계산식: ${subject['formula']}</span></div></div></span><span class="xxlarge brown">${subject['total_score']}</span></div>
+            <div class="name-score-container"><span>성취도</span><span class="xxlarge brown">${subject['grade']}</span></div>
+        </div>
+      </div>
+    </div>`:`<div class="results-container">
       <div class="result-col">
         <span class="xxlarge">#${i + 1} ${subject['subject_name']}</span>
           <div class="result-detail-container xlarge">
             <div class="name-score-container"><span>원점수</span><span class="xxlarge brown">${Math.round(subject['total_score'])}</span></div>
-            <div class="name-score-container"><span>합계점수</span><span class="xxlarge brown">${subject['total_score']}</span></div>
+            <div class="name-score-container"><span class="result-title">합계점수<div class="icon-wrapper"><i class="fa-regular fa-circle-question"></i><div class="tooltip"><span class="brown">현재 계산식: ${subject['formula']}</span></div></div></span><span class="xxlarge brown">${subject['total_score']}</span></div>
             <div class="name-score-container"><span>성취도</span><span class="xxlarge brown">${subject['grade']}</span></div>
         </div>
       </div>
     </div>`
+    
     document.querySelector('.main-container').insertAdjacentHTML('beforeend', char)
   });
   document.getElementById('calculate').style.display = 'none';
