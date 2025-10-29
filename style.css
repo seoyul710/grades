@@ -27,7 +27,6 @@ html, body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
-	font-synthesis: none;
 	-webkit-text-size-adjust: 100%;
 }
 
