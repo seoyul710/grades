@@ -341,7 +341,7 @@ i {
     visibility: hidden !important;
     transform: 0;
  	}
-	.icon-wrapper i.active .tooltip {
+	.icon-wrapper i.active + .tooltip {
     opacity: 1;
     visibility: visible;
 		transform: translateX(-50%) translateY(0);
