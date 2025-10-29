@@ -23,6 +23,7 @@ html, body {
 	height: auto;
 	overflow-x: hidden;
 	box-sizing: border-box;
+	font-family: "Pretendard";
 }
 
 
@@ -312,6 +313,9 @@ i {
 		font-size: 30px;
 		margin: 0;
 	}
+	select {
+		width: 65px;
+	}
 	.input-col {
 		height: 160px;
 		flex-direction: column;
@@ -320,13 +324,13 @@ i {
 		font-size: 14px;
 	}
 	input {
-		height: 32px;
+		height: 30px;
 		width: 55px;
 		border-radius: 10px;
 		line-height: 10px;
 	}
 	.performance-input {
-	width: 42px;
+	width: 40px;
 	}
 	.xxlarge {
 		font-size: 3.5rem;
