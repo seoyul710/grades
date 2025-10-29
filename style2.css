@@ -319,6 +319,9 @@ i {
 		font-size: 30px;
 		margin: 0;
 	}
+	select {
+		width: 65px;
+	}
 	.input-col {
 		height: 100px;
 		flex-direction: column;
@@ -327,7 +330,7 @@ i {
 		font-size: 14px;
 	}
 	input {
-		height: 32px;
+		height: 30px;
 		width: 55px;
 		border-radius: 10px;
 		line-height: 10px;
