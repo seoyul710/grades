@@ -47,13 +47,6 @@ function disableSelectAndInput() {
 });
 }
 
-document.querySelectorAll('.icon-wrapper i').forEach(icon => {
-  icon.addEventListener('click', () => {
-    icon.classList.toggle('active');
-    console.log(icon.classList);
-  });
-});
-
 function addAdjustPerformanceMaxScoreEventListener(number) {
   document.getElementById(`subject-${number}`).addEventListener('change', (e) => {
   const selectedValue = e.target.value;
@@ -201,6 +194,13 @@ function displayResult() {
     </div>`
     
     document.querySelector('.main-container').insertAdjacentHTML('beforeend', char)
+
+    document.querySelectorAll('.icon-wrapper i').forEach(icon => {
+      icon.addEventListener('click', () => {
+        icon.classList.toggle('active');
+        console.log(icon.classList);
+      });
+    });
   });
   document.getElementById('calculate').style.display = 'none';
   document.getElementById('more-btn').style.display = 'none';
