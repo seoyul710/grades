@@ -25,6 +25,14 @@ html, body {
 	box-sizing: border-box;
 }
 
+html, body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	font-synthesis: none;
+	-webkit-text-size-adjust: 100%;
+}
+
 
 .wrap {
 	display: block;

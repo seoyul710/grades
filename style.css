@@ -24,6 +24,11 @@ html, body {
 	overflow-x: hidden;
 	box-sizing: border-box;
 	font-family: "Pretendard";
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	font-synthesis: none;
+	-webkit-text-size-adjust: 100%;
 }
 
 
