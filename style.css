@@ -336,4 +336,9 @@ i {
 		margin-left: 5%;
 		margin-right: 5%;
 	}
+	.icon-wrapper i:active + .tooltip{
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
 }
