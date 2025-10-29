@@ -198,7 +198,11 @@ function displayResult() {
     const resultsBlocks = document.querySelectorAll('.results-container');
     const newlyInserted = resultsBlocks[resultsBlocks.length - 1];
     newlyInserted.querySelectorAll('.icon-wrapper i').forEach(icon => {
-      icon.addEventListener('click', () => {
+      icon.addEventListener('click', (event) => {
+        event.stopPropagation();
+        document.querySelectorAll('.icon-wrapper i.active').forEach(other => {
+          if (other !== icon) other.classList.remove('active');
+        });
         icon.classList.toggle('active');
         console.log(icon.classList);
       });
@@ -211,3 +215,11 @@ function displayResult() {
 
 
 document.getElementById('calculate').addEventListener('click', displayResult)
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.icon-wrapper')) {
+    document.querySelectorAll('.icon-wrapper i.active').forEach(icon => {
+      icon.classList.remove('active');
+    });
+  }
+})
