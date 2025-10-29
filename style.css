@@ -273,6 +273,12 @@ i {
     border-top-color: #333;
 }
 
+.icon-wrapper i.active + .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
 .icon-wrapper i:hover + .tooltip{
     opacity: 1;
     visibility: visible;
@@ -340,9 +346,4 @@ i {
 		margin-left: 5%;
 		margin-right: 5%;
 	}
-	.icon-wrapper i.active + .tooltip {
-    opacity: 1;
-    visibility: visible;
-		transform: translateX(-50%) translateY(0);
-  }
 }
