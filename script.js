@@ -195,7 +195,9 @@ function displayResult() {
     
     document.querySelector('.main-container').insertAdjacentHTML('beforeend', char)
 
-    document.querySelectorAll('.icon-wrapper i').forEach(icon => {
+    const resultsBlocks = document.querySelectorAll('.results-container');
+    const newlyInserted = resultsBlocks[resultsBlocks.length - 1];
+    newlyInserted.querySelectorAll('.icon-wrapper i').forEach(icon => {
       icon.addEventListener('click', () => {
         icon.classList.toggle('active');
         console.log(icon.classList);
