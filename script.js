@@ -50,6 +50,7 @@ function disableSelectAndInput() {
 document.querySelectorAll('.icon-wrapper i').forEach(icon => {
   icon.addEventListener('click', () => {
     icon.classList.toggle('active');
+    console.log(icon.classList);
   });
 });
 
