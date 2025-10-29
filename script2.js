@@ -43,6 +43,12 @@ function disableSelectAndInput() {
   });
 }
 
+document.querySelectorAll('.icon-wrapper i').forEach(icon => {
+  icon.addEventListener('click', () => {
+    icon.classList.toggle('active');
+  });
+});
+
 function addAdjustPerformanceMaxScoreEventListener(number) {
   document.getElementById(`subject-${number}`).addEventListener('change', (e) => {
     const selectedValue = e.target.value;

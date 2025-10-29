@@ -304,7 +304,7 @@ i {
 	}
 }
 
-@media (max-width: 651px) {
+@media (max-width: 768px) {
 	.title {
 		font-size: 3rem;
 	}
@@ -336,9 +336,9 @@ i {
 		margin-left: 5%;
 		margin-right: 5%;
 	}
-	.icon-wrapper i:active + .tooltip{
+	.icon-wrapper i.active .tooltip {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0);
-}
+		transform: translateX(-50%) translateY(0);
+  }
 }
