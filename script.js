@@ -1,4 +1,4 @@
-let showsNow = 2
+let showsNow = 1
 function newCol(number) {
   return `<div class="input-col">
   <div class="sebject">
@@ -37,10 +37,8 @@ function showmore() {
 }
 
 function resetCol() {
-  showsNow = 2;
-  document.querySelector('.main-container').innerHTML = newCol(1) + newCol(2);
-  addAdjustPerformanceMaxScoreEventListener(1)
-  addAdjustPerformanceMaxScoreEventListener(2)
+  showsNow = 1;
+  document.querySelector('.main-container').innerHTML = newCol(1);
 }
 
 function disableSelectAndInput() {
@@ -61,12 +59,12 @@ function addAdjustPerformanceMaxScoreEventListener(number) {
 function resetAll() {
   result = [];
   resetCol();
+  addAdjustPerformanceMaxScoreEventListener(1)
   document.getElementById('calculate').style.display = 'block';
   document.getElementById('more-btn').style.display = 'block';
 }
 
 addAdjustPerformanceMaxScoreEventListener(1)
-addAdjustPerformanceMaxScoreEventListener(2)
 document.getElementById('more-btn').addEventListener('click', () => {
   showmore()
   addAdjustPerformanceMaxScoreEventListener(showsNow)
